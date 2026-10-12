@@ -248,9 +248,9 @@ class DrivesViewController: UITableViewController, NSFetchedResultsControllerDel
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-        if editingStyle == UITableViewCellEditingStyle.delete {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
             
             // get the model object
             let drive = self.fetchedResultsController!.object(at: indexPath) as! Drive
@@ -294,14 +294,14 @@ class DrivesViewController: UITableViewController, NSFetchedResultsControllerDel
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+            tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
         case .delete:
-            tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
+            tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
         case .update:
             self.configureCell(tableView.cellForRow(at: indexPath!)!, atIndexPath: indexPath!)
         case .move:
-            tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.fade)
-            tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.fade)
+            tableView.deleteRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
+            tableView.insertRows(at: [newIndexPath!], with: UITableView.RowAnimation.fade)
         }
     }
     

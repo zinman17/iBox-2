@@ -1,0 +1,99 @@
+name: Build iBox IPA
+
+# Builds the iBox app (Bochs x86 PC emulator for iOS) on a macOS runner and
+# packages an unsigned device .ipa. Install it by signing with AltStore,
+# SideStore, Sideloadly, ESign, or installing directly with TrollStore.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write # needed to create the release
+
+jobs:
+  build-ipa:
+    name: Build unsigned IPA (macOS)
+    runs-on: macos-15
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcodebuild -showsdks | grep -i iphoneos
+          xcrun --sdk iphoneos --show-sdk-path
+
+      - name: Build iBox app (unsigned, iOS device)
+        run: |
+          set -o pipefail
+          # This 2017-era project has no shared schemes, so build by target.
+          # -target builds the dependent sub-projects too
+          # (BochsKit.framework <- full Bochs 2.6.8 core, MBProgressHUD.framework).
+          xcodebuild \
+            -project iBox/iBox.xcodeproj \
+            -target iBox \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM="" \
+            build 2>&1 | tee "${{ github.workspace }}/xcodebuild.log" | grep -E "^[0-9]+%|error|warning: |BUILD" || true
+          if ! grep -q "\*\* BUILD SUCCEEDED \*\*" xcodebuild.log; then
+            echo "::error::xcodebuild did not succeed. Last 250 log lines:"
+            tail -n 250 xcodebuild.log
+            exit 1
+          fi
+
+      - name: Package unsigned IPA
+        run: |
+          set -euxo pipefail
+          APP_PATH=$(find build/Build/Products -maxdepth 2 -type d -name "iBox.app" | head -n 1)
+          if [ -z "$APP_PATH" ]; then
+            APP_PATH=$(find build/Build/Products -maxdepth 2 -type d -name "*.app" | head -n 1)
+          fi
+          test -n "$APP_PATH" || { echo "::error::No .app produced"; exit 1; }
+          echo "App bundle: $APP_PATH"
+          du -sh "$APP_PATH"
+          ls "$APP_PATH"
+          rm -rf Payload iBox-unsigned.ipa
+          mkdir Payload
+          cp -R "$APP_PATH" Payload/
+          zip -qry iBox-unsigned.ipa Payload
+          ls -lh iBox-unsigned.ipa
+          unzip -l iBox-unsigned.ipa | head -30
+          echo "--- linked libraries of main binary ---"
+          otool -L "$APP_PATH/iBox" 2>/dev/null | head -25 || true
+          echo "--- embedded frameworks ---"
+          ls "$APP_PATH/Frameworks" 2>/dev/null || echo "no Frameworks dir"
+
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: iBox-unsigned-ipa-${{ github.run_number }}
+          path: iBox-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Create release with IPA
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "ci-build-${{ github.run_number }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "iBox IPA — build #${{ github.run_number }}" \
+            --notes "Unsigned iOS IPA of **iBox 2.6.8** (Bochs x86 PC emulator for iOS), built automatically by GitHub Actions from the \`master\` branch.
+
+          Includes the full Bochs 2.6.8 emulator core (BochsKit.framework) with SDL audio.
+
+          The app is **unsigned** — install it by signing with **AltStore**, **SideStore**, **Sideloadly**, **ESign**, or install directly with **TrollStore**." \
+            iBox-unsigned.ipa
