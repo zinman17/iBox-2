@@ -42,7 +42,8 @@ jobs:
             -target iBox \
             -configuration Release \
             -sdk iphoneos \
-            -derivedDataPath build \
+            SYMROOT="${{ github.workspace }}/build/Build/Products" \
+            OBJROOT="${{ github.workspace }}/build/Build/Intermediates.noindex" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -57,9 +58,9 @@ jobs:
       - name: Package unsigned IPA
         run: |
           set -euxo pipefail
-          APP_PATH=$(find build/Build/Products -maxdepth 2 -type d -name "iBox.app" | head -n 1)
+          APP_PATH=$(find build -type d -name "iBox.app" -not -path "*Intermediates*" | head -n 1)
           if [ -z "$APP_PATH" ]; then
-            APP_PATH=$(find build/Build/Products -maxdepth 2 -type d -name "*.app" | head -n 1)
+            APP_PATH=$(find build -type d -name "*.app" -not -path "*Intermediates*" | head -n 1)
           fi
           test -n "$APP_PATH" || { echo "::error::No .app produced"; exit 1; }
           echo "App bundle: $APP_PATH"
