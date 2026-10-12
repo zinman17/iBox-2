@@ -70,7 +70,6 @@
 		6B78774F1E13441C00C6DF6C /* avx_fma.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78765C1E13441A00C6DF6C /* avx_fma.cc */; };
 		6B7877501E13441C00C6DF6C /* avx_pfp.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78765D1E13441A00C6DF6C /* avx_pfp.cc */; };
 		6B7877511E13441C00C6DF6C /* gather.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78765E1E13441A00C6DF6C /* gather.cc */; };
-		6B7877521E13441C00C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B78765F1E13441A00C6DF6C /* Makefile.in */; };
 		6B7877531E13441C00C6DF6C /* tbm32.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876601E13441A00C6DF6C /* tbm32.cc */; };
 		6B7877541E13441C00C6DF6C /* tbm64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876611E13441A00C6DF6C /* tbm64.cc */; };
 		6B7877551E13441C00C6DF6C /* xop.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876621E13441A00C6DF6C /* xop.cc */; };
@@ -120,7 +119,6 @@
 		6B7877811E13441C00C6DF6C /* corei7_sandy_bridge_2600K.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78768F1E13441A00C6DF6C /* corei7_sandy_bridge_2600K.cc */; };
 		6B7877821E13441C00C6DF6C /* corei7_sandy_bridge_2600K.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876901E13441A00C6DF6C /* corei7_sandy_bridge_2600K.h */; };
 		6B7877831E13441C00C6DF6C /* corei7_sandy_bridge_2600K.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6B7876911E13441A00C6DF6C /* corei7_sandy_bridge_2600K.txt */; };
-		6B7877841E13441C00C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B7876921E13441A00C6DF6C /* Makefile.in */; };
 		6B7877851E13441C00C6DF6C /* p2_klamath.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876931E13441A00C6DF6C /* p2_klamath.cc */; };
 		6B7877861E13441C00C6DF6C /* p2_klamath.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876941E13441A00C6DF6C /* p2_klamath.h */; };
 		6B7877871E13441C00C6DF6C /* p2_klamath.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6B7876951E13441A00C6DF6C /* p2_klamath.txt */; };
@@ -196,7 +194,6 @@
 		6B7877CD1E13441D00C6DF6C /* fpu_trans.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876DC1E13441A00C6DF6C /* fpu_trans.cc */; };
 		6B7877CE1E13441D00C6DF6C /* fsincos.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876DD1E13441A00C6DF6C /* fsincos.cc */; };
 		6B7877CF1E13441D00C6DF6C /* fyl2x.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876DE1E13441A00C6DF6C /* fyl2x.cc */; };
-		6B7877D01E13441D00C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B7876DF1E13441A00C6DF6C /* Makefile.in */; };
 		6B7877D11E13441D00C6DF6C /* poly.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876E01E13441A00C6DF6C /* poly.cc */; };
 		6B7877D21E13441D00C6DF6C /* softfloat-compare.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876E11E13441A00C6DF6C /* softfloat-compare.h */; };
 		6B7877D31E13441D00C6DF6C /* softfloat-macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876E21E13441A00C6DF6C /* softfloat-macros.h */; };
@@ -212,7 +209,6 @@
 		6B7877DD1E13441D00C6DF6C /* softfloatx80.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876EC1E13441B00C6DF6C /* softfloatx80.h */; };
 		6B7877DE1E13441D00C6DF6C /* status_w.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876ED1E13441B00C6DF6C /* status_w.h */; };
 		6B7877DF1E13441D00C6DF6C /* tag_w.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876EE1E13441B00C6DF6C /* tag_w.h */; };
-		6B7877E01E13441D00C6DF6C /* todo in Resources */ = {isa = PBXBuildFile; fileRef = 6B7876EF1E13441B00C6DF6C /* todo */; };
 		6B7877E11E13441D00C6DF6C /* fpu_emu.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876F01E13441B00C6DF6C /* fpu_emu.cc */; };
 		6B7877E21E13441D00C6DF6C /* generic_cpuid.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876F11E13441B00C6DF6C /* generic_cpuid.cc */; };
 		6B7877E31E13441D00C6DF6C /* generic_cpuid.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7876F21E13441B00C6DF6C /* generic_cpuid.h */; };
@@ -231,7 +227,6 @@
 		6B7877F01E13441D00C6DF6C /* logical16.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7876FF1E13441B00C6DF6C /* logical16.cc */; };
 		6B7877F11E13441D00C6DF6C /* logical32.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7877001E13441B00C6DF6C /* logical32.cc */; };
 		6B7877F21E13441D00C6DF6C /* logical64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7877011E13441B00C6DF6C /* logical64.cc */; };
-		6B7877F31E13441D00C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B7877021E13441B00C6DF6C /* Makefile.in */; };
 		6B7877F41E13441D00C6DF6C /* mmx.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7877031E13441B00C6DF6C /* mmx.cc */; };
 		6B7877F51E13441D00C6DF6C /* msr.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7877041E13441B00C6DF6C /* msr.cc */; };
 		6B7877F61E13441D00C6DF6C /* mult8.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7877051E13441B00C6DF6C /* mult8.cc */; };
@@ -272,7 +267,6 @@
 		6B7878191E13441D00C6DF6C /* svm.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7877281E13441C00C6DF6C /* svm.cc */; };
 		6B78781A1E13441D00C6DF6C /* svm.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7877291E13441C00C6DF6C /* svm.h */; };
 		6B78781B1E13441D00C6DF6C /* tasking.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78772A1E13441C00C6DF6C /* tasking.cc */; };
-		6B78781C1E13441D00C6DF6C /* todo in Resources */ = {isa = PBXBuildFile; fileRef = 6B78772B1E13441C00C6DF6C /* todo */; };
 		6B78781D1E13441D00C6DF6C /* vapic.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78772C1E13441C00C6DF6C /* vapic.cc */; };
 		6B78781E1E13441D00C6DF6C /* vm8086.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78772D1E13441C00C6DF6C /* vm8086.cc */; };
 		6B78781F1E13441D00C6DF6C /* vmcs.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78772E1E13441C00C6DF6C /* vmcs.cc */; };
@@ -291,7 +285,6 @@
 		6B7878391E13443700C6DF6C /* dis_tables.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78782C1E13443700C6DF6C /* dis_tables.h */; };
 		6B78783A1E13443700C6DF6C /* dis_tables.inc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78782D1E13443700C6DF6C /* dis_tables.inc */; };
 		6B78783B1E13443700C6DF6C /* disasm.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78782E1E13443700C6DF6C /* disasm.h */; };
-		6B78783C1E13443700C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B78782F1E13443700C6DF6C /* Makefile.in */; };
 		6B78783D1E13443700C6DF6C /* opcodes.inc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878301E13443700C6DF6C /* opcodes.inc */; };
 		6B78783E1E13443700C6DF6C /* resolve.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878311E13443700C6DF6C /* resolve.cc */; };
 		6B78783F1E13443700C6DF6C /* syntax.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878321E13443700C6DF6C /* syntax.cc */; };
@@ -334,7 +327,6 @@
 		6B7878C01E13446500C6DF6C /* keymap.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878671E13446500C6DF6C /* keymap.cc */; };
 		6B7878C11E13446500C6DF6C /* keymap.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7878681E13446500C6DF6C /* keymap.h */; };
 		6B7878C21E13446500C6DF6C /* macintosh.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878791E13446500C6DF6C /* macintosh.cc */; };
-		6B7878C31E13446500C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B78787A1E13446500C6DF6C /* Makefile.in */; };
 		6B7878C51E13446500C6DF6C /* nogui.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6B78787C1E13446500C6DF6C /* nogui.mm */; };
 		6B7878C61E13446500C6DF6C /* paramtree.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78787D1E13446500C6DF6C /* paramtree.cc */; };
 		6B7878C71E13446500C6DF6C /* paramtree.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78787E1E13446500C6DF6C /* paramtree.h */; };
@@ -368,7 +360,6 @@
 		6B7879C11E13449700C6DF6C /* cmos.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7878F71E13449600C6DF6C /* cmos.h */; };
 		6B7879C21E13449700C6DF6C /* devices.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878F81E13449600C6DF6C /* devices.cc */; };
 		6B7879C31E13449700C6DF6C /* devices.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6B7878F91E13449600C6DF6C /* devices.txt */; };
-		6B7879C41E13449700C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B7878FB1E13449600C6DF6C /* Makefile.in */; };
 		6B7879C51E13449700C6DF6C /* svga_cirrus.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878FC1E13449600C6DF6C /* svga_cirrus.cc */; };
 		6B7879C61E13449700C6DF6C /* svga_cirrus.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7878FD1E13449600C6DF6C /* svga_cirrus.h */; };
 		6B7879C71E13449700C6DF6C /* vga.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7878FE1E13449600C6DF6C /* vga.cc */; };
@@ -392,7 +383,6 @@
 		6B7879D91E13449700C6DF6C /* harddrv.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879101E13449600C6DF6C /* harddrv.h */; };
 		6B7879E41E13449700C6DF6C /* hdimage.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78791C1E13449600C6DF6C /* hdimage.cc */; };
 		6B7879E51E13449700C6DF6C /* hdimage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78791D1E13449600C6DF6C /* hdimage.h */; };
-		6B7879E61E13449700C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B78791E1E13449600C6DF6C /* Makefile.in */; };
 		6B7879E71E13449700C6DF6C /* scsi_commands.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78791F1E13449600C6DF6C /* scsi_commands.h */; };
 		6B7879EA1E13449700C6DF6C /* vmware3.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879221E13449600C6DF6C /* vmware3.cc */; };
 		6B7879EB1E13449700C6DF6C /* vmware3.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879231E13449600C6DF6C /* vmware3.h */; };
@@ -405,7 +395,6 @@
 		6B7879F61E13449700C6DF6C /* iodev.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78792E1E13449600C6DF6C /* iodev.h */; };
 		6B7879F71E13449700C6DF6C /* keyboard.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78792F1E13449600C6DF6C /* keyboard.cc */; };
 		6B7879F81E13449700C6DF6C /* keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879301E13449600C6DF6C /* keyboard.h */; };
-		6B7879F91E13449700C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B7879311E13449600C6DF6C /* Makefile.in */; };
 		6B787A361E13449800C6DF6C /* parallel.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879701E13449600C6DF6C /* parallel.cc */; };
 		6B787A371E13449800C6DF6C /* parallel.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879711E13449600C6DF6C /* parallel.h */; };
 		6B787A381E13449800C6DF6C /* pci_ide.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879721E13449600C6DF6C /* pci_ide.cc */; };
@@ -432,7 +421,6 @@
 		6B787A4D1E13449800C6DF6C /* slowdown_timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879871E13449700C6DF6C /* slowdown_timer.h */; };
 		6B787A4E1E13449800C6DF6C /* es1370.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879891E13449700C6DF6C /* es1370.cc */; };
 		6B787A4F1E13449800C6DF6C /* es1370.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78798A1E13449700C6DF6C /* es1370.h */; };
-		6B787A501E13449800C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B78798B1E13449700C6DF6C /* Makefile.in */; };
 		6B787A511E13449800C6DF6C /* opl.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78798C1E13449700C6DF6C /* opl.cc */; };
 		6B787A521E13449800C6DF6C /* opl.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B78798D1E13449700C6DF6C /* opl.h */; };
 		6B787A531E13449800C6DF6C /* sb16.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B78798E1E13449700C6DF6C /* sb16.cc */; };
@@ -456,7 +444,6 @@
 		6B787A661E13449800C6DF6C /* speaker.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879A11E13449700C6DF6C /* speaker.h */; };
 		6B787A671E13449800C6DF6C /* unmapped.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879A21E13449700C6DF6C /* unmapped.cc */; };
 		6B787A681E13449800C6DF6C /* unmapped.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879A31E13449700C6DF6C /* unmapped.h */; };
-		6B787A691E13449800C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B7879A51E13449700C6DF6C /* Makefile.in */; };
 		6B787A6A1E13449800C6DF6C /* scsi_device.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879A61E13449700C6DF6C /* scsi_device.cc */; };
 		6B787A6B1E13449800C6DF6C /* scsi_device.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879A71E13449700C6DF6C /* scsi_device.h */; };
 		6B787A6C1E13449800C6DF6C /* usb_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879A81E13449700C6DF6C /* usb_common.cc */; };
@@ -477,7 +464,6 @@
 		6B787A7B1E13449900C6DF6C /* usb_xhci.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879B71E13449700C6DF6C /* usb_xhci.h */; };
 		6B787A7C1E13449900C6DF6C /* virt_timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B7879B81E13449700C6DF6C /* virt_timer.cc */; };
 		6B787A7D1E13449900C6DF6C /* virt_timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7879B91E13449700C6DF6C /* virt_timer.h */; };
-		6B787A821E1344AD00C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B787A7E1E1344AD00C6DF6C /* Makefile.in */; };
 		6B787A831E1344AD00C6DF6C /* memory.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787A7F1E1344AD00C6DF6C /* memory.cc */; };
 		6B787A841E1344AD00C6DF6C /* memory.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B787A801E1344AD00C6DF6C /* memory.h */; };
 		6B787A851E1344AD00C6DF6C /* misc_mem.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787A811E1344AD00C6DF6C /* misc_mem.cc */; };
@@ -502,7 +488,6 @@
 		6B787B251E137FF600C6DF6C /* eth_vde.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787AE81E137FF600C6DF6C /* eth_vde.cc */; };
 		6B787B261E137FF600C6DF6C /* eth_vnet.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787AE91E137FF600C6DF6C /* eth_vnet.cc */; };
 		6B787B271E137FF600C6DF6C /* eth_win32.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787AEA1E137FF600C6DF6C /* eth_win32.cc */; };
-		6B787B281E137FF600C6DF6C /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = 6B787AEB1E137FF600C6DF6C /* Makefile.in */; };
 		6B787B291E137FF600C6DF6C /* ne2k.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787AEC1E137FF600C6DF6C /* ne2k.cc */; };
 		6B787B2A1E137FF600C6DF6C /* ne2k.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B787AED1E137FF600C6DF6C /* ne2k.h */; };
 		6B787B2B1E137FF600C6DF6C /* netmod.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6B787AEE1E137FF600C6DF6C /* netmod.cc */; };
@@ -2311,14 +2296,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B78781C1E13441D00C6DF6C /* todo in Resources */,
-				6B7877D01E13441D00C6DF6C /* Makefile.in in Resources */,
 				6B7878AA1E13446500C6DF6C /* mouse.xpm in Resources */,
 				6B7877771E13441C00C6DF6C /* corei5_arrandale_m520.txt in Resources */,
-				6B7879C41E13449700C6DF6C /* Makefile.in in Resources */,
-				6B787B281E137FF600C6DF6C /* Makefile.in in Resources */,
 				6B78777D1E13441C00C6DF6C /* corei7_haswell_4770.txt in Resources */,
-				6B7877521E13441C00C6DF6C /* Makefile.in in Resources */,
 				6B7877831E13441C00C6DF6C /* corei7_sandy_bridge_2600K.txt in Resources */,
 				6B7878AC1E13446500C6DF6C /* paste.xpm in Resources */,
 				6B7877621E13441C00C6DF6C /* amd_k6_2_chomper.txt in Resources */,
@@ -2326,8 +2306,6 @@
 				6B78776E1E13441C00C6DF6C /* broadwell_ult.txt in Resources */,
 				6B7877651E13441C00C6DF6C /* athlon64_clawhammer.txt in Resources */,
 				6B7876351E13438900C6DF6C /* win32res.rc in Resources */,
-				6B7877841E13441C00C6DF6C /* Makefile.in in Resources */,
-				6B7877F31E13441D00C6DF6C /* Makefile.in in Resources */,
 				6B78762B1E13438800C6DF6C /* msrs.def in Resources */,
 				6B7878A01E13446500C6DF6C /* cdromd.xpm in Resources */,
 				6B7879C31E13449700C6DF6C /* devices.txt in Resources */,
@@ -2336,27 +2314,20 @@
 				6B7877931E13441C00C6DF6C /* pentium.txt in Resources */,
 				6B7877991E13441C00C6DF6C /* phenomx3_8650_toliman.txt in Resources */,
 				6B78776B1E13441C00C6DF6C /* atom_n270.txt in Resources */,
-				6B7879F91E13449700C6DF6C /* Makefile.in in Resources */,
 				6BAFBAD11E165B47006046B5 /* VGABIOS-lgpl-latest-cirrus in Resources */,
 				6B787B361E137FF600C6DF6C /* COPYRIGHT in Resources */,
-				6B787A501E13449800C6DF6C /* Makefile.in in Resources */,
 				6B7878BF1E13446500C6DF6C /* icon_bochs.xpm in Resources */,
 				6B7876341E13438900C6DF6C /* win32_enh_dbg.rc in Resources */,
 				6B7877741E13441C00C6DF6C /* core_duo_t2400_yonah.txt in Resources */,
 				6B78779C1E13441C00C6DF6C /* trinity_apu.txt in Resources */,
-				6B78783C1E13443700C6DF6C /* Makefile.in in Resources */,
 				6B7878A21E13446500C6DF6C /* configbutton.xpm in Resources */,
 				6B7878A61E13446500C6DF6C /* floppya.xpm in Resources */,
 				6B78778D1E13441C00C6DF6C /* p4_prescott_celeron_336.txt in Resources */,
 				6B7878AE1E13446500C6DF6C /* power.xpm in Resources */,
 				6B7878B01E13446500C6DF6C /* reset.xpm in Resources */,
 				6B7876361E13438900C6DF6C /* wxbochs.rc in Resources */,
-				6B7879E61E13449700C6DF6C /* Makefile.in in Resources */,
-				6B7877E01E13441D00C6DF6C /* todo in Resources */,
 				6B7878A81E13446500C6DF6C /* floppyb.xpm in Resources */,
 				6B7878B61E13446500C6DF6C /* userbutton.xpm in Resources */,
-				6B787A821E1344AD00C6DF6C /* Makefile.in in Resources */,
-				6B787A691E13449800C6DF6C /* Makefile.in in Resources */,
 				6B7877901E13441C00C6DF6C /* p4_willamette.txt in Resources */,
 				6B78777A1E13441C00C6DF6C /* corei5_lynnfield_750.txt in Resources */,
 				6B7878B41E13446500C6DF6C /* snapshot.xpm in Resources */,
@@ -2364,7 +2335,6 @@
 				6B78779F1E13441C00C6DF6C /* turion64_tyler.txt in Resources */,
 				6B78778A1E13441C00C6DF6C /* p3_katmai.txt in Resources */,
 				6B7877681E13441C00C6DF6C /* athlon64_venice.txt in Resources */,
-				6B7878C31E13446500C6DF6C /* Makefile.in in Resources */,
 				6B7878A41E13446500C6DF6C /* copy.xpm in Resources */,
 				6B7877961E13441C00C6DF6C /* pentium_mmx.txt in Resources */,
 				6B7877711E13441C00C6DF6C /* core2_penryn_t9600.txt in Resources */,
