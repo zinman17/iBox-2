@@ -120,7 +120,7 @@ class DriveEditorViewController: UITableViewController, UITextFieldDelegate {
             
             /*
             let switchControl = UISwitch()
-            switchControl.addTarget(self, action: "switchFlipped:", forControlEvents: UIControlEvents.ValueChanged)
+            switchControl.addTarget(self, action: #selector(DriveEditorViewController.switchFlipped(_:)), for: UIControl.Event.valueChanged)
             cell.accessoryView = switchControl
             */
             if ((self.drive as? CDRom) != nil) {

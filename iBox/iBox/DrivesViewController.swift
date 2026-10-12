@@ -85,7 +85,7 @@ class DrivesViewController: UITableViewController, NSFetchedResultsControllerDel
     
     // MARK: - Actions
     
-    func irqStepperValueDidChange(_ sender: UIStepper) {
+    @objc func irqStepperValueDidChange(_ sender: UIStepper) {
         
         // get model object
         let sectionInfo = self.fetchedResultsController!.sections![sender.tag] as NSFetchedResultsSectionInfo
@@ -242,7 +242,7 @@ class DrivesViewController: UITableViewController, NSFetchedResultsControllerDel
         headerView.ataLabel.text = NSLocalizedString("ATA Interface", comment: "ATA Interface") + " \(ataInterface.id.intValue)"
         headerView.irqLabel.text = NSLocalizedString("IRQ", comment: "IRQ") + " \(ataInterface.irq.intValue)"
         headerView.irqStepper.value = ataInterface.irq.doubleValue
-        headerView.irqStepper.addTarget(self, action: #selector(DrivesViewController.irqStepperValueDidChange(_:)), for: UIControlEvents.valueChanged)
+        headerView.irqStepper.addTarget(self, action: #selector(DrivesViewController.irqStepperValueDidChange(_:)), for: UIControl.Event.valueChanged)
         headerView.irqStepper.tag = section
         
         return headerView

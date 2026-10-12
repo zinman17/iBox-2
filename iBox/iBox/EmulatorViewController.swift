@@ -210,14 +210,14 @@ class EmulatorViewController: UIViewController {
         }
     }
     
-    func startEmulator() {
+    @objc func startEmulator() {
         
         let configFilePath = self.exportConfigurationToTemporaryFile(self.configuration!)
         
         BXEmulator.startBochs(withConfigPath: configFilePath);
     }
     
-    func startRendering() {
+    @objc func startRendering() {
         
         let timer = Timer(timeInterval: 0.01, target: self, selector: #selector(EmulatorViewController.redrawRenderer), userInfo: nil, repeats: true)
         
@@ -225,7 +225,7 @@ class EmulatorViewController: UIViewController {
         RunLoop.current.run()
     }
     
-    func redrawRenderer() {
+    @objc func redrawRenderer() {
         
         BXRenderView.sharedInstance().doRedraw()
     }
