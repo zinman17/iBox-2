@@ -219,7 +219,7 @@ class EmulatorViewController: UIViewController {
     
     @objc func startRendering() {
         
-        let timer = Timer(timeInterval: 0.01, target: self, selector: #selector(EmulatorViewController.redrawRenderer), userInfo: nil, repeats: true)
+        let timer = Timer(timeInterval: 0.033, target: self, selector: #selector(EmulatorViewController.redrawRenderer), userInfo: nil, repeats: true)
         
         RunLoop.current.add(timer, forMode: RunLoop.Mode.default)
         RunLoop.current.run()
@@ -228,6 +228,27 @@ class EmulatorViewController: UIViewController {
     @objc func redrawRenderer() {
         
         BXRenderView.sharedInstance().doRedraw()
+    }
+    
+    // A blank (0-byte) or missing disc image makes Bochs panic/crash at startup -
+    // only mark the disc as inserted if it actually has content.
+    func driveFileIsUsable(_ drive: Drive) -> Bool {
+        
+        let fileURL = documentsURL!.appendingPathComponent(drive.fileName)
+        
+        var isDirectory: ObjCBool = false
+        
+        guard FileManager.default.fileExists(atPath: fileURL.path, isDirectory: &isDirectory), !isDirectory.boolValue else {
+            return false
+        }
+        
+        var fileSize: Int64 = 0
+        
+        if let attributes = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
+            fileSize = (attributes[FileAttributeKey.size] as? NSNumber)?.int64Value ?? 0
+        }
+        
+        return fileSize > 0
     }
     
     func exportConfigurationToTemporaryFile(_ configuration: Configuration) -> String {
@@ -303,7 +324,7 @@ class EmulatorViewController: UIViewController {
                         
                         var insertedString: String?
                         
-                        if cdrom.discInserted.boolValue {
+                        if cdrom.discInserted.boolValue && driveFileIsUsable(drive) {
                             
                             insertedString = "inserted"
                         }
@@ -326,7 +347,7 @@ class EmulatorViewController: UIViewController {
                         
                         var insertedString: String?
                         
-                        if floppy.discInserted.boolValue {
+                        if floppy.discInserted.boolValue && driveFileIsUsable(drive) {
                             
                             insertedString = "inserted"
                         }

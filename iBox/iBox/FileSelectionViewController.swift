@@ -14,7 +14,7 @@ import MBProgressHUD
 
 private let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first! as URL
 
-class FileSelectionViewController: UITableViewController {
+class FileSelectionViewController: UITableViewController, UIDocumentPickerDelegate {
     
     // MARK: - Properties
     
@@ -29,7 +29,21 @@ class FileSelectionViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Import button: lets users bring disk images into the app without a PC
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(FileSelectionViewController.importFile(_:)))
+        
         self.refresh(self)
+    }
+    
+    @objc func importFile(_ sender: AnyObject) {
+        
+        // import (copy) any data file - covers .iso, .img, .ima, etc.
+        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.data"], in: UIDocumentPickerMode.import)
+        
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        
+        self.present(documentPicker, animated: true, completion: nil)
     }
     
     // MARK: - Actions
@@ -260,6 +274,45 @@ class FileSelectionViewController: UITableViewController {
             self.drive?.fileName = self.files[self.tableView.indexPath(for: cell)!.row]
         }
         
+    }
+}
+
+// MARK: - UIDocumentPickerDelegate
+
+extension FileSelectionViewController {
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        guard let sourceURL = urls.first else {
+            return
+        }
+        
+        let fileName = sourceURL.lastPathComponent
+        let destinationURL = documentsURL.appendingPathComponent(fileName)
+        
+        do {
+            // replace an existing file with the same name
+            if FileManager.default.fileExists(atPath: destinationURL.path) {
+                try FileManager.default.removeItem(at: destinationURL)
+            }
+            
+            try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
+        }
+        catch {
+            
+            let alertController = UIAlertController(title: NSLocalizedString("Error", comment: "Error"),
+                message: NSLocalizedString("Could not import the file.", comment: "Could not import the file."),
+                preferredStyle: UIAlertController.Style.alert)
+            
+            alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+            return
+        }
+        
+        // show the newly imported file
+        self.refresh(self)
     }
 }
 

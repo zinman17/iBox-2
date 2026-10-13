@@ -48,10 +48,10 @@
 class bx_nogui_gui_c : public bx_gui_c 
 {
 public:
-	bx_nogui_gui_c (void) {}
-	void show_ips(Bit32u ips_count);
+        bx_nogui_gui_c (void) {}
+        void show_ips(Bit32u ips_count);
 
-	DECLARE_GUI_VIRTUAL_METHODS()
+        DECLARE_GUI_VIRTUAL_METHODS()
     DECLARE_GUI_NEW_VIRTUAL_METHODS()
 };
 
@@ -72,10 +72,10 @@ IMPLEMENT_GUI_PLUGIN_CODE(nogui)
 
 typedef struct _EventStruct
 {
-	int isMouse;
-	int x;
-	int y;
-	int button;
+        int isMouse;
+        int x;
+        int y;
+        int button;
 } EventStruct;
 
 static BXRenderView* renderView;
@@ -136,70 +136,70 @@ static NSDate *date = [NSDate date];
 
 - (id)init:(UIWindow*)window
 {
-	self = [super initWithFrame:CGRectMake(0, 0, 480, 320)];
-	self.transform = CGAffineTransformMakeRotation(3.1415926/2);
-	self.transform = CGAffineTransformTranslate(self.transform, 80, 80);
-	self.multipleTouchEnabled = YES;
+        self = [super initWithFrame:CGRectMake(0, 0, 480, 320)];
+        self.transform = CGAffineTransformMakeRotation(3.1415926/2);
+        self.transform = CGAffineTransformTranslate(self.transform, 80, 80);
+        self.multipleTouchEnabled = YES;
 
-	renderView = self;
-	
-	imageData = nil;
-	imageContext = nil;
-	
-	self.backgroundColor = [UIColor blackColor];
-	
-	isTextMode = YES;
-	
-	[self recreateImageContextWithX:800 y:600 bpp:16];
-	
-	[self addToWindow:window];
-	
-	return self;
+        renderView = self;
+        
+        imageData = nil;
+        imageContext = nil;
+        
+        self.backgroundColor = [UIColor blackColor];
+        
+        isTextMode = YES;
+        
+        [self recreateImageContextWithX:800 y:600 bpp:16];
+        
+        [self addToWindow:window];
+        
+        return self;
 }
 
 - (void)addToWindow:(UIWindow*)window
 {
-	[window addSubview:self];	
+        [window addSubview:self];       
 }
 
 - (void)recreateImageContextWithX:(int)x y:(int)y bpp:(int)bpp
-{	
-	sz.width = x;
-	sz.height = y;
-	
-	currentResX = sz.width;
-	currentResY = sz.height;
+{       
+        sz.width = x;
+        sz.height = y;
+        
+        currentResX = sz.width;
+        currentResY = sz.height;
 
-	@synchronized(self)
-	{
-		if (imageContext)
-		{
-			CGContextRelease(imageContext);
-			imageContext = nil;
-		}
-	 
-		if (imageData)
-		{
-			free(imageData);
-			imageData = nil;
-		}
-	 
-		imageData = (int*)malloc(sz.width * sz.height * 4);
-		imageContext = CGBitmapContextCreate(imageData, sz.width, sz.height, 8, sz.width*4, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaNoneSkipLast);
-	}
-	
-	CGContextSetRGBFillColor(imageContext, 0.0f, 0.0f, 0.0f, 1.0f);
-	CGContextFillRect(imageContext, CGRectMake(0, 0, sz.width, sz.height));
+        @synchronized(self)
+        {
+                if (imageContext)
+                {
+                        CGContextRelease(imageContext);
+                        imageContext = nil;
+                }
+         
+                if (imageData)
+                {
+                        free(imageData);
+                        imageData = nil;
+                }
+         
+                imageData = (int*)malloc(sz.width * sz.height * 4);
+                imageContext = CGBitmapContextCreate(imageData, sz.width, sz.height, 8, sz.width*4, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaNoneSkipLast);
+        }
+        
+        CGContextSetRGBFillColor(imageContext, 0.0f, 0.0f, 0.0f, 1.0f);
+        CGContextFillRect(imageContext, CGRectMake(0, 0, sz.width, sz.height));
     
     bpr = sz.width*4;
 }
 
 - (void)doRedraw
 {
-	if (self.superview)
-	{
-		[self setNeedsDisplay];
-	}
+        if (self.superview)
+        {
+                [self setNeedsDisplay];
+        }
 }
 
 - (void)rescaleFrame
@@ -232,17 +232,17 @@ void addToEventBuffer(int isMouse, int x, int y, int button)
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     touchCount = 0;
-	for (UITouch* touch in touches)
-	{
-		if (touchCount == 0)
-		{
-			CGPoint p = [touch locationInView:self];
+        for (UITouch* touch in touches)
+        {
+                if (touchCount == 0)
+                {
+                        CGPoint p = [touch locationInView:self];
 
-			touchX = p.x;
-			touchY = p.y;
-		}
-		touchCount++;
-	}
+                        touchX = p.x;
+                        touchY = p.y;
+                }
+                touchCount++;
+        }
     if(oldTime > 0 && touchCount == 1) {
         if(-[date timeIntervalSinceNow]*1000 <= oldTime) {
             oldTime = 0;
@@ -254,22 +254,22 @@ void addToEventBuffer(int isMouse, int x, int y, int button)
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
 
-	for (UITouch* touch in touches)
-	{
-		CGPoint p = [touch locationInView:self];
-		CGPoint pOld = [touch previousLocationInView:self];
-		
+        for (UITouch* touch in touches)
+        {
+                CGPoint p = [touch locationInView:self];
+                CGPoint pOld = [touch previousLocationInView:self];
+                
         addToEventBuffer(1, p.x - pOld.x, p.y - pOld.y, quickTap == YES ? 1 : 0);
-	}
+        }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event //messy, needs a rewrite
 {
     int isTap = 0;
-	for (UITouch* touch in touches)
-	{
-		CGPoint p = [touch locationInView:self];
-		CGPoint pOld = [touch previousLocationInView:self];
+        for (UITouch* touch in touches)
+        {
+                CGPoint p = [touch locationInView:self];
+                CGPoint pOld = [touch previousLocationInView:self];
         if ((abs(p.x - touchX) < 5) && (abs(p.y-touchY) < 5) && isTap == 0 && quickTap == NO) {
             prevTime = -[date timeIntervalSinceNow]*1000 + 10;
             if (touches.count == 2 || touchCount == 2) {
@@ -287,7 +287,7 @@ void addToEventBuffer(int isMouse, int x, int y, int button)
             addToEventBuffer(1, p.x - pOld.x, p.y - pOld.y, isTap);
             isTap = -1;
         }
-	}
+        }
     quickTap = NO;
 }
 
@@ -297,10 +297,10 @@ void addToEventBuffer(int isMouse, int x, int y, int button)
 
 - (void)drawRect:(CGRect)rect 
 {
-	@synchronized(self)
-	{
-		@autoreleasepool {
-		
+        @synchronized(self)
+        {
+                @autoreleasepool {
+                
             CGContextRef c = UIGraphicsGetCurrentContext();
             CGContextSaveGState(c);
             //res is 480x320
@@ -332,35 +332,66 @@ void addToEventBuffer(int isMouse, int x, int y, int button)
                 CGContextSaveGState(c);
                 CGContextTranslateCTM(c, self.frame.size.width / 2 - fwidth / 2, self.frame.size.height / 2 - fheight / 2);
                 UIFont* font = [UIFont fontWithName:@"Courier" size:averageHeight];
-                NSDictionary * fontAttributes = @{NSFontAttributeName: font,
-                                                 NSForegroundColorAttributeName: [UIColor whiteColor]};
-				
+                                
                 if(averageWidth == 0) {
                     averageHeight = (fwidth / 80) / 0.63; //60 char width for now, (too small on some displays)
                     averageWidth = averageHeight * 0.63;
                 } else {
+                    // Standard VGA 16-color text palette
+                    static const unsigned vgaTextPalette[16][3] = {
+                        {0,   0,   0  }, {0,   0,   170}, {0,   170, 0  }, {0,   170, 170},
+                        {170, 0,   0  }, {170, 0,   170}, {170, 85,  0  }, {170, 170, 170},
+                        {85,  85,  85 }, {85,  85,  255}, {85,  255, 85 }, {85,  255, 255},
+                        {255, 85,  85 }, {255, 85,  255}, {255, 255, 85 }, {255, 255, 255}
+                    };
+                    static UIColor *fgColors[16] = {nil};
+                    
                     for (int y = 0; y < 25; y++)
                     {
                         for (int x = 0; x < 80; x++)
                         {
-                            unichar ch = textBuffer[x + y*80] & 0xff;
+                            unsigned short cell = textBuffer[x + y*80];
+                            unichar ch = cell & 0xff;
+                            unsigned attr = (cell >> 8) & 0xff;
+                            unsigned fg = attr & 0x0f;
+                            unsigned bg = (attr >> 4) & 0x07; // ignore blink bit
+                            
+                            CGFloat cellW = averageWidth;
+                            CGFloat cellH = averageHeight;
+                            CGFloat px = x * cellW;
+                            CGFloat py = y * cellH;
+                            
+                            // draw the cell background with the attribute background color
+                            const unsigned *b = vgaTextPalette[bg];
+                            CGContextSetRGBFillColor(c, b[0] / 255.0, b[1] / 255.0, b[2] / 255.0, 1.0);
+                            CGContextFillRect(c, CGRectMake(px, py, cellW, cellH));
+                            
+                            if (ch == 0 || ch == 0x20) continue;
+                            
+                            if (fgColors[fg] == nil) {
+                                const unsigned *f = vgaTextPalette[fg];
+                                fgColors[fg] = [UIColor colorWithRed:f[0] / 255.0 green:f[1] / 255.0 blue:f[2] / 255.0 alpha:1.0];
+                            }
+                            
+                            NSDictionary * fontAttributes = @{NSFontAttributeName: font,
+                                                             NSForegroundColorAttributeName: fgColors[fg]};
                             
                             NSString * s = [[NSString alloc] initWithCharacters:&ch length:1];
-                            [s drawAtPoint:CGPointMake(x * averageWidth, y * averageHeight) withAttributes:fontAttributes];
+                            [s drawAtPoint:CGPointMake(px, py) withAttributes:fontAttributes];
                         }
                     }
                 }
-				
+                                
                 CGContextRestoreGState(c);
-			}
-		
-		}
-	}
+                        }
+                
+                }
+        }
 }
 
 - (int*)imageData
 {
-	return imageData;
+        return imageData;
 }
 
 - (void)vKeyDown:(int)keyCode
@@ -382,13 +413,13 @@ void addToEventBuffer(int isMouse, int x, int y, int button)
 
 void bx_nogui_gui_c::specific_init(int argc, char **argv, unsigned tilewidth, unsigned tileheight, unsigned headerbar_y)
 {
-	BX_GUI_THIS new_gfx_api = 0;
-	BX_GUI_THIS host_xres = 800;
-	BX_GUI_THIS host_yres = 600;
-	BX_GUI_THIS host_bpp = 32;
-	
-	tsx = tilewidth;
-	tsy = tileheight;
+        BX_GUI_THIS new_gfx_api = 0;
+        BX_GUI_THIS host_xres = 800;
+        BX_GUI_THIS host_yres = 600;
+        BX_GUI_THIS host_bpp = 32;
+        
+        tsx = tilewidth;
+        tsy = tileheight;
 }
 
 void bx_nogui_gui_c::handle_events(void)
@@ -399,11 +430,11 @@ void bx_nogui_gui_c::handle_events(void)
             addToEventBuffer(1, prevX, prevY, 0);
         }
     }
-	while(eventBufferPos)
-	{
-		eventBufferPos--;
-		if (eventBuffer[eventBufferPos].isMouse)
-		{
+        while(eventBufferPos)
+        {
+                eventBufferPos--;
+                if (eventBuffer[eventBufferPos].isMouse)
+                {
             int buttons = 0;
             //Stolen from SVGA :)
             if (eventBuffer[eventBufferPos].button == 1) {
@@ -412,9 +443,9 @@ void bx_nogui_gui_c::handle_events(void)
             if (eventBuffer[eventBufferPos].button == 2) {
                 buttons |= 0x02;
             }
-			DEV_mouse_motion(eventBuffer[eventBufferPos].x, eventBuffer[eventBufferPos].y, 0, buttons, 0);
-		}
-	}
+                        DEV_mouse_motion(eventBuffer[eventBufferPos].x, eventBuffer[eventBufferPos].y, 0, buttons, 0);
+                }
+        }
 }
 
 void bx_nogui_gui_c::text_update(Bit8u *old_text, Bit8u *new_text,
@@ -422,8 +453,8 @@ void bx_nogui_gui_c::text_update(Bit8u *old_text, Bit8u *new_text,
                                  bx_vga_tminfo_t *tm_info)
 {
 
-	memcpy(textBuffer, new_text, 4000);	
-	isTextMode = YES;
+        memcpy(textBuffer, new_text, 4000);     
+        isTextMode = YES;
 }
 
 void bx_nogui_gui_c::flush(void)
@@ -436,73 +467,73 @@ void bx_nogui_gui_c::clear_screen(void)
 
 int bx_nogui_gui_c::get_clipboard_text(Bit8u **bytes, Bit32s *nbytes)
 {
-	return 0;
+        return 0;
 }
 
 int bx_nogui_gui_c::set_clipboard_text(char *text_snapshot, Bit32u len)
 {
-	return 0;
+        return 0;
 }
 
 bx_bool bx_nogui_gui_c::palette_change(Bit8u index, Bit8u red, Bit8u green, Bit8u blue)
 {
-	if (index > 255) return 0;
-	
-	indexed_colors[index][0] = red;
-	indexed_colors[index][1] = green;
-	indexed_colors[index][2] = blue;
-	
-	return 1;
+        if (index > 255) return 0;
+        
+        indexed_colors[index][0] = red;
+        indexed_colors[index][1] = green;
+        indexed_colors[index][2] = blue;
+        
+        return 1;
 }
 
 void bx_nogui_gui_c::graphics_tile_update(Bit8u *tile, unsigned x0, unsigned y0)
 {
-	isTextMode = NO;
-	int* imageData = [renderView imageData];
-	if (currentBpp == 32) // not tested yet
-	{
-		for (int y = 0; y < tsy; y++)
-		{
-			int py = y + y0;
-			memcpy(&imageData[x0 + py*currentResX], &tile[y*tsx*4], tsy * 4);
-		}
-	}else if (currentBpp == 16 || currentBpp == 24)
-	{
-		for (int y = 0; y < tsy; y++)
-		{
-			int py = y + y0;
-			py = MIN(py, currentResY-1);
-			
-			for (int x = 0; x < tsx; x++)
-			{
-				int px = x + x0;
-				px = MIN(px, currentResX-1);
-				
-				unsigned int c = ((unsigned int*)tile)[x + y*tsx];
-				
-				c = ((c & 0xff) << 16) | (c & 0xff00) | ((c & 0xff0000) >> 16);
-				
-				imageData[px + py*currentResX] = c;
-			}
-		}
-	}else // 8
-	{
-		for (int y = 0; y < tsy; y++)
-		{
-			int py = y + y0;
-			py = MIN(py, currentResY-1);
-			
-			for (int x = 0; x < tsx; x++)
-			{
-				int px = x + x0;
-				px = MIN(px, currentResX-1);
-				
-				unsigned int c = tile[x + y*tsx];
-				c = indexed_colors[c][0] | (indexed_colors[c][1] << 8) | (indexed_colors[c][2] << 16);
-				imageData[px + py*currentResX] = c;
-			}
-		}
-	}
+        isTextMode = NO;
+        int* imageData = [renderView imageData];
+        if (currentBpp == 32) // not tested yet
+        {
+                for (int y = 0; y < tsy; y++)
+                {
+                        int py = y + y0;
+                        memcpy(&imageData[x0 + py*currentResX], &tile[y*tsx*4], tsy * 4);
+                }
+        }else if (currentBpp == 16 || currentBpp == 24)
+        {
+                for (int y = 0; y < tsy; y++)
+                {
+                        int py = y + y0;
+                        py = MIN(py, currentResY-1);
+                        
+                        for (int x = 0; x < tsx; x++)
+                        {
+                                int px = x + x0;
+                                px = MIN(px, currentResX-1);
+                                
+                                unsigned int c = ((unsigned int*)tile)[x + y*tsx];
+                                
+                                c = ((c & 0xff) << 16) | (c & 0xff00) | ((c & 0xff0000) >> 16);
+                                
+                                imageData[px + py*currentResX] = c;
+                        }
+                }
+        }else // 8
+        {
+                for (int y = 0; y < tsy; y++)
+                {
+                        int py = y + y0;
+                        py = MIN(py, currentResY-1);
+                        
+                        for (int x = 0; x < tsx; x++)
+                        {
+                                int px = x + x0;
+                                px = MIN(px, currentResX-1);
+                                
+                                unsigned int c = tile[x + y*tsx];
+                                c = indexed_colors[c][0] | (indexed_colors[c][1] << 8) | (indexed_colors[c][2] << 16);
+                                imageData[px + py*currentResX] = c;
+                        }
+                }
+        }
 }
 
 bx_svga_tileinfo_t *bx_nogui_gui_c ::graphics_tile_info(bx_svga_tileinfo_t *info)
@@ -539,13 +570,13 @@ Bit8u *bx_nogui_gui_c::graphics_tile_get(unsigned x0, unsigned y0,
 
 void bx_nogui_gui_c::dimension_update(unsigned x, unsigned y, unsigned fheight, unsigned fwidth, unsigned bpp)
 {
-	currentResX = x;
-	currentResY = y;
-	currentBpp = bpp;
-	if (bpp >= 8)
-	{
-		[renderView recreateImageContextWithX:x y:y bpp:bpp];
-	}
+        currentResX = x;
+        currentResY = y;
+        currentBpp = bpp;
+        if (bpp >= 8)
+        {
+                [renderView recreateImageContextWithX:x y:y bpp:bpp];
+        }
 }
 
 void bx_nogui_gui_c::show_ips(Bit32u ips_count)
@@ -558,12 +589,12 @@ void bx_nogui_gui_c::show_ips(Bit32u ips_count)
 
 unsigned bx_nogui_gui_c::create_bitmap(const unsigned char *bmap, unsigned xdim, unsigned ydim)
 {
-	return 0;
+        return 0;
 }
 
 unsigned bx_nogui_gui_c::headerbar_bitmap(unsigned bmap_id, unsigned alignment, void (*f)(void))
 {
-	return 0;
+        return 0;
 }
 
 void bx_nogui_gui_c::show_headerbar(void)
